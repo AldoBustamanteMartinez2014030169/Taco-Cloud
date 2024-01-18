@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class Taco {
+	private Long id;
+	private Date createdAt;
 	@NotBlank(message = "Name must not be blank")
 	private String name;
 	@NotBlank(message = "You must choose at least 1 ingredient")
