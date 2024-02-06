@@ -5,8 +5,8 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-
 import lombok.Data;
+import java.util.Date;
 
 @Data
 public class Order {
