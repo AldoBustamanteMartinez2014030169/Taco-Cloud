@@ -31,6 +31,7 @@ public class JdbcTacoRepository implements TacoRepository {
 		return taco;
 	}
 
+	// Como necesitamos leer el ID de la base de datos, se usa update con un PSC y un KeyHolder
 	private long saveTacoInfo(Taco taco) {
 		taco.setCreatedAt(new Date());
 		PreparedStatementCreator psc = new PreparedStatementCreatorFactory(
