@@ -56,10 +56,10 @@ public class DesignTacoController {
 		ingredientRepo.findAll().forEach(i -> ingredients.add(i));
 		Type[] types = Ingredient.Type.values();
 		for (Type type : types) {
+			// Se agrega al modelo: (wrap,(lista de ingredientes de tipo wrap)) y asi con todos los tipos
 			model.addAttribute(type.toString().toLowerCase(),
 			filterByType(ingredients, type));
 		}
-		>> falta model.addAttribute("design", new Taco()); ??????????
 		return "design";
 	}
 
@@ -70,7 +70,7 @@ public class DesignTacoController {
 		}
 		
 		Taco saved = designRepo.save(taco);
- 		order.addDesign(saved);
+ 		// order.addDesign(saved);
 		log.info("Processing design: " + taco);
 		return "redirect:/orders/current";
 	}

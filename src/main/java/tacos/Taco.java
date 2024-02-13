@@ -14,5 +14,5 @@ public class Taco {
 	@NotBlank(message = "Name must not be blank")
 	private String name;
 	@NotBlank(message = "You must choose at least 1 ingredient")
-	private List<String> ingredients;
+	private List<String> ingredients; // Lista de todos los IDs de los ingredientes del taco creado ("FLTO", "CARN", "SLSA")
 }
