@@ -40,10 +40,25 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
+    // @Bean
+	// public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	// 	http.authorizeHttpRequests((authorize) -> authorize.anyRequest().fullyAuthenticated())
+	// 			.formLogin(Customizer.withDefaults());
+
+	// 	return http.build();
+	// }
+
     @Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests((authorize) -> authorize.anyRequest().fullyAuthenticated())
-				.formLogin(Customizer.withDefaults());
+		http.authorizeHttpRequests((authorize) ->
+                authorize
+                    .requestMatchers("/design", "/orders").hasRole("USER")
+                    .requestMatchers("/", "/**").permitAll()
+                )
+				.formLogin(form -> form
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/design")
+                    .permitAll());
 
 		return http.build();
 	}
